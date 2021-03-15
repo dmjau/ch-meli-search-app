@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MeliSearchApp</string>
+    <string name="search_products">Buscar Productos</string>
+    <string name="search_product">Buscar Producto</string>
+    <string name="image_product">image_product</string>
+    <string name="resource_not_found">Resource not found</string>
+    <string name="bad_request">Bad Request</string>
+    <string name="server_error">Server Error</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="loading">Buscando...</string>
+    <string name="no_images">No se encontraron imagenes del producto.</string>
+    <string name="no_detail_product">No se encontro detalle del producto.</string>
+    <string name="no_connection">Sin conexion</string>
+    <string name="no_elements">No se encontraron elementos.</string>
+    <string name="error_connection">Error de conexion.</string>
+    <string name="free_shipping">Envio Gratis</string>
+    <string name="normal_shipping">Envio Con Normalidad</string>
+</resources>
