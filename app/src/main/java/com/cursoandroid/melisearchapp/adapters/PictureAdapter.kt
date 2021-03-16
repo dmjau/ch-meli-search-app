@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.adapter
+package com.cursoandroid.melisearchapp.adapters
 
 import android.view.View
 import android.view.ViewGroup

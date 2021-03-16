@@ -15,14 +15,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.adapter.ProductAdapter
+import com.cursoandroid.melisearchapp.adapters.PublicationAdapter
 import com.cursoandroid.melisearchapp.common.ConnectivityCheck
 import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var adapter: ProductAdapter
+    private lateinit var adapter: PublicationAdapter
     private var snackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +68,7 @@ class HomeActivity : AppCompatActivity() {
             Snackbar.LENGTH_LONG
         )
         //Check the internet connection using Connection class.
-        if (ConnectivityCheck.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
+        if (ConnectivityCheck.verifyConnection(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             snackbar!!.show()
             homeViewModel.searchProduct(product)
         } else {
@@ -85,7 +85,7 @@ class HomeActivity : AppCompatActivity() {
 
         homeViewModel.productList.observe(this, Observer {
             val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-            adapter = ProductAdapter()
+            adapter = PublicationAdapter()
             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
             recyclerView.adapter = adapter
             adapter.setDataList(it.results)

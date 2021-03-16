@@ -3,18 +3,18 @@ package com.cursoandroid.melisearchapp.ui.home
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.common.CodeError
-import com.cursoandroid.melisearchapp.repository.MeLiRepository
-import com.cursoandroid.melisearchapp.data.models.Response
+import com.cursoandroid.melisearchapp.common.ErrorStatusCode
+import com.cursoandroid.melisearchapp.repository.RepositoryMeli
+import com.cursoandroid.melisearchapp.data.models.InfoResponse
 
 class HomeViewModel() : ViewModel() {
-    private var meLiRepository: MeLiRepository = MeLiRepository()
+    private var repositoryMeli: RepositoryMeli = RepositoryMeli()
 
     var message: MutableLiveData<Int> = MutableLiveData<Int>()
-    val productList = MutableLiveData<Response>()
+    val productList = MutableLiveData<InfoResponse>()
 
     fun searchProduct(product: String) {
-        meLiRepository.responseSearch(
+        repositoryMeli.responseSearch(
             product,
             { _, _ ->
                 message.postValue(R.string.error_connection)
@@ -27,7 +27,7 @@ class HomeViewModel() : ViewModel() {
                         message.postValue(R.string.no_elements)
                     }
                 }else{
-                    message.postValue(CodeError.evaluateResponseCode(response.code()))
+                    message.postValue(ErrorStatusCode.evaluateResponseCode(response.code()))
                 }
             })
     }

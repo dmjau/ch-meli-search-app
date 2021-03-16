@@ -1,6 +1,6 @@
 package com.cursoandroid.melisearchapp.data.models
 
-class TypePublication {
+class PublicationType {
     companion object{
         const val GOLD_PRO: String = "gold_pro"
         const val GOLD_PREMIUM: String = "gold_premium"

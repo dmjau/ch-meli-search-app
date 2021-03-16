@@ -12,10 +12,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.adapter.PictureAdapter
+import com.cursoandroid.melisearchapp.adapters.PictureAdapter
 import com.cursoandroid.melisearchapp.common.ConnectivityCheck
 import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.data.models.Article
+import com.cursoandroid.melisearchapp.data.models.Attribute
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import java.text.NumberFormat
@@ -44,11 +44,11 @@ class DetailPublicationActivity : AppCompatActivity() {
     }
 
     private fun validateIntent() {
-        if (intent.extras!!.containsKey(Constants.PUBLICATION_PARAM)) {
-            val detailPublication: Article =
+        if (intent.extras!!.containsKey(Constants.PARAM_PUB)) {
+            val detailPublication: Attribute =
                 Gson().fromJson(
-                    intent.extras!!.getString(Constants.PUBLICATION_PARAM)
-                    , Article::class.java
+                    intent.extras!!.getString(Constants.PARAM_PUB)
+                    , Attribute::class.java
                 )
             populatePublication(detailPublication)
         }
@@ -60,7 +60,7 @@ class DetailPublicationActivity : AppCompatActivity() {
         }
     }
 
-    private fun populatePublication(detailPublication: Article) {
+    private fun populatePublication(detailPublication: Attribute) {
         val titleProduct: TextView = findViewById(R.id.title_product)
         val format = NumberFormat.getCurrencyInstance(Locale.getDefault())
         var price = format.format(detailPublication.price.roundToInt())
@@ -71,7 +71,7 @@ class DetailPublicationActivity : AppCompatActivity() {
         price = price.replace(",00", "").replace("ARS", "")
         priceProduct.text = price
 
-        if (ConnectivityCheck.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
+        if (ConnectivityCheck.verifyConnection(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             val container: View = findViewById(R.id.containerDetailProduct)
             snackbar = Snackbar.make(
                 container,
@@ -104,7 +104,7 @@ class DetailPublicationActivity : AppCompatActivity() {
     }
 
     private fun setDescription(idPublication: String) {
-        if (detailPublicationViewModel.detailProduct.value == null) {
+        if (detailPublicationViewModel.itemDetailProduct.value == null) {
             detailPublicationViewModel.getDetailProduct(idPublication)
         }
     }
@@ -132,7 +132,7 @@ class DetailPublicationActivity : AppCompatActivity() {
             }
         })
 
-        detailPublicationViewModel.detailProduct.observe(this, Observer {
+        detailPublicationViewModel.itemDetailProduct.observe(this, Observer {
             val descriptionProduct: TextView = findViewById(R.id.description_product)
             descriptionProduct.text = it[0].plain_text
         })

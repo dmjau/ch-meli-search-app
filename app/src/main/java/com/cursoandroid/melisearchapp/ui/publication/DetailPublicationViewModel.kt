@@ -3,37 +3,37 @@ package com.cursoandroid.melisearchapp.ui.publication
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.common.CodeError
-import com.cursoandroid.melisearchapp.repository.MeLiRepository
-import com.cursoandroid.melisearchapp.data.models.Detail
+import com.cursoandroid.melisearchapp.common.ErrorStatusCode
+import com.cursoandroid.melisearchapp.repository.RepositoryMeli
+import com.cursoandroid.melisearchapp.data.models.ItemDetail
 
 class DetailPublicationViewModel : ViewModel() {
-    private val meLiRepository: MeLiRepository = MeLiRepository()
+    private val repositoryMeli: RepositoryMeli = RepositoryMeli()
 
-    var detailProduct: MutableLiveData<ArrayList<Detail>> = MutableLiveData<ArrayList<Detail>>()
-    var item: MutableLiveData<Detail> = MutableLiveData<Detail>()
+    var itemDetailProduct: MutableLiveData<ArrayList<ItemDetail>> = MutableLiveData<ArrayList<ItemDetail>>()
+    var item: MutableLiveData<ItemDetail> = MutableLiveData<ItemDetail>()
     var message: MutableLiveData<Int> = MutableLiveData<Int>()
 
     fun getDetailProduct(idProduct: String) {
-        meLiRepository.responseDetail(idProduct,
+        repositoryMeli.responseDetail(idProduct,
             { _, _ ->
                 message.postValue(R.string.error_connection)
             },
             { _, response ->
                 if (response.isSuccessful) {
                     if (response.body()!!.isNotEmpty()) {
-                        detailProduct.postValue(response.body())
+                        itemDetailProduct.postValue(response.body())
                     } else {
                         message.postValue(R.string.no_detail_product)
                     }
                 } else {
-                    message.postValue(CodeError.evaluateResponseCode(response.code()))
+                    message.postValue(ErrorStatusCode.evaluateResponseCode(response.code()))
                 }
             })
     }
 
     fun getItems(idItem: String) {
-        meLiRepository.responseGetItem(idItem,
+        repositoryMeli.responseGetItem(idItem,
             { _, _ ->
                 message.postValue(R.string.error_connection)
             },
@@ -45,7 +45,7 @@ class DetailPublicationViewModel : ViewModel() {
                         message.postValue(R.string.no_images)
                     }
                 } else {
-                    message.postValue(CodeError.evaluateResponseCode(response.code()))
+                    message.postValue(ErrorStatusCode.evaluateResponseCode(response.code()))
                 }
             })
     }

@@ -2,7 +2,7 @@ package com.cursoandroid.melisearchapp.data.models
 
 import com.google.gson.annotations.SerializedName
 
-data class Detail(
+data class ItemDetail(
     @SerializedName("id") val id: String,
     @SerializedName("created") val created: String,
     @SerializedName("plain_text") val plain_text: String,
