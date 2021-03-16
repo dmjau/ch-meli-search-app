@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.common.CodeError
 import com.cursoandroid.melisearchapp.repository.MeLiRepository
-import com.cursoandroid.melisearchapp.retrofit.models.Response
+import com.cursoandroid.melisearchapp.data.models.Response
 
 class HomeViewModel() : ViewModel() {
     private var meLiRepository: MeLiRepository = MeLiRepository()

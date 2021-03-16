@@ -1,8 +1,8 @@
-package com.cursoandroid.melisearchapp.retrofit
+package com.cursoandroid.melisearchapp.data
 
 import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.retrofit.models.Detail
-import com.cursoandroid.melisearchapp.retrofit.models.Response
+import com.cursoandroid.melisearchapp.data.models.Detail
+import com.cursoandroid.melisearchapp.data.models.Response
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,19 +10,19 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-interface MeLiService {
+interface ApiServiceMeli {
     companion object{
-        var instance : MeLiService? = null
+        var instance : ApiServiceMeli? = null
             get() {
                 if(field == null){
-                    // Construir el cliente de Retrofit
+                    //Retrofit constructor
                     val retrofit = Retrofit.Builder()
                         .baseUrl(Constants.MELI_URL_BASE)
                         .addConverterFactory(GsonConverterFactory.create())
                         .build()
 
-                    // Instanciamos el servicio de retrofit a partir de su objeto
-                    instance = retrofit.create(MeLiService::class.java)
+                    //Init Retrofit object.
+                    instance = retrofit.create(ApiServiceMeli::class.java)
                 }
                 return field
             }

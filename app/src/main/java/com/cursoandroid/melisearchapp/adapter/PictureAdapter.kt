@@ -6,7 +6,8 @@ import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.squareup.picasso.Picasso
 
-class PictureAdapter(val imageUrls: ArrayList<com.cursoandroid.melisearchapp.retrofit.models.Picture>) : PagerAdapter() {
+class PictureAdapter(val imageUrls: ArrayList<com.cursoandroid.melisearchapp.data.models.Picture>) : PagerAdapter() {
+
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`
     }
@@ -17,9 +18,11 @@ class PictureAdapter(val imageUrls: ArrayList<com.cursoandroid.melisearchapp.ret
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val imageView = ImageView(container.context)
+
         Picasso.get()
             .load(imageUrls[position].secure_url)
             .into(imageView);
+
         container.addView(imageView);
         return imageView;
     }

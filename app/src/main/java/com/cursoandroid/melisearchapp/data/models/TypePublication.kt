@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.retrofit.models
+package com.cursoandroid.melisearchapp.data.models
 
 class TypePublication {
     companion object{

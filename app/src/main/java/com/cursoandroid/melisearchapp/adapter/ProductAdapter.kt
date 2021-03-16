@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.cursoandroid.melisearchapp.R.layout
 import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.retrofit.models.Article
-import com.cursoandroid.melisearchapp.retrofit.models.TypePublication
+import com.cursoandroid.melisearchapp.data.models.Article
+import com.cursoandroid.melisearchapp.data.models.TypePublication
 import com.cursoandroid.melisearchapp.ui.publication.DetailPublicationActivity
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
@@ -19,12 +19,22 @@ import kotlin.math.roundToInt
 
 
 class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
+
     private var dataList = listOf<Article>()
+
     fun setDataList(data: List<Article>) {
         dataList = data
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(imageUrl: String){
+            println(imageUrl)
+            Picasso.get().load(imageUrl).into(itemView.logo_product)
+            println(imageUrl)
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
@@ -42,12 +52,12 @@ class ProductAdapter : RecyclerView.Adapter<ProductAdapter.ViewHolder>() {
         val format = NumberFormat.getCurrencyInstance(Locale.getDefault())
         format.currency = Currency.getInstance(publication.currency_id)
         val price = format.format(publication.price.roundToInt())
+
         holder.itemView.title.text = publication.title
         holder.itemView.price.text ="$ ${price.replace(",00","").replace("ARS","")}"
 
-        Picasso.get()
-            .load(publication.thumbnail.replace("http", "https"))
-            .into(holder.itemView.logo_product)
+        holder.bind(publication.thumbnail)
+
 
         if(publication.listing_type_id ==  TypePublication.GOLD_PREMIUM){
             holder.itemView.ship_normally.visibility = View.VISIBLE

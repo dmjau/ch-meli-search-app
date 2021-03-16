@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">MeliSearchApp</string>
     <string name="search_products">Buscar Productos</string>
-    <string name="search_product">Buscar Producto</string>
-    <string name="image_product">image_product</string>
+    <string name="search_product">Buscar en Mercado Libre</string>
+    <string name="logo_product">image_product</string>
     <string name="resource_not_found">Resource not found</string>
     <string name="bad_request">Bad Request</string>
     <string name="server_error">Server Error</string>
@@ -15,4 +15,6 @@
     <string name="error_connection">Error de conexion.</string>
     <string name="free_shipping">Envio Gratis</string>
     <string name="normal_shipping">Envio Con Normalidad</string>
+    <string name="logo_footer_brand">logo footer brand</string>
+    <string name="text_init_autor">By Dante Martin Jaume</string>
 </resources>

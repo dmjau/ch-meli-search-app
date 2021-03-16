@@ -1,41 +1,40 @@
 package com.cursoandroid.melisearchapp.repository
 
-import com.cursoandroid.melisearchapp.retrofit.MeLiService
-import com.cursoandroid.melisearchapp.retrofit.models.Detail
-import com.cursoandroid.melisearchapp.retrofit.models.Response
+import com.cursoandroid.melisearchapp.data.ApiServiceMeli
+import com.cursoandroid.melisearchapp.data.models.Detail
+import com.cursoandroid.melisearchapp.data.models.Response
 import retrofit2.Call
 import retrofit2.Callback
 
 class MeLiRepository {
-    var meLiService: MeLiService? = null
-
+    //initianlized api service
+    var apiServiceMeli: ApiServiceMeli? = null
     init {
-        meLiService = MeLiService.instance
+        apiServiceMeli = ApiServiceMeli.instance
     }
 
+    //Call method Search
     fun responseSearch(
         product: String,
         onFailure: (call: Call<Response>, t: Throwable) -> Unit,
-        onResponse: (call: Call<Response>, response: retrofit2.Response<Response>) -> Unit
-    ) {
-        meLiService?.searchProduct(product)?.enqueue(object : Callback<Response> {
+        onResponse: (call: Call<Response>, response: retrofit2.Response<Response>) -> Unit) {
+        apiServiceMeli?.searchProduct(product)?.enqueue(object : Callback<Response> {
             override fun onFailure(call: Call<Response>, t: Throwable) {
-//                Toast.makeText(MyApp.instance, "Error en la llamada.", Toast.LENGTH_LONG).show()
                 onFailure(call, t);
             }
-
             override fun onResponse(call: Call<Response>, response: retrofit2.Response<Response>) {
                 onResponse(call, response)
             }
         })
     }
 
+    //Call method Detail
     fun responseDetail(
         idProduct: String,
         onFailure: (call: Call<ArrayList<Detail>>, t: Throwable) -> Unit,
         onResponse: (call: Call<ArrayList<Detail>>, response: retrofit2.Response<ArrayList<Detail>>) -> Unit
     ){
-        meLiService?.getDetailProduct(idProduct)?.enqueue(object: Callback<ArrayList<Detail>> {
+        apiServiceMeli?.getDetailProduct(idProduct)?.enqueue(object: Callback<ArrayList<Detail>> {
             override fun onFailure(call: Call<ArrayList<Detail>>, t: Throwable) {
                 onFailure(call,t)
             }
@@ -46,12 +45,13 @@ class MeLiRepository {
         })
     }
 
+    //Call method Get item
     fun responseGetItem(
         idItem:String,
         onFailure: (call: Call<Detail>, t: Throwable) -> Unit,
         onResponse: (call: Call<Detail>, response: retrofit2.Response<Detail>) -> Unit
     ){
-        meLiService?.getItems(idItem)?.enqueue(object: Callback<Detail> {
+        apiServiceMeli?.getItems(idItem)?.enqueue(object: Callback<Detail> {
             override fun onFailure(call: Call<Detail>, t: Throwable) {
                 onFailure(call,t)
             }

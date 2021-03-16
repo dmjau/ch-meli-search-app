@@ -4,7 +4,6 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.View
-import android.widget.*
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -14,9 +13,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.adapter.PictureAdapter
-import com.cursoandroid.melisearchapp.common.Connection
+import com.cursoandroid.melisearchapp.common.ConnectivityCheck
 import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.retrofit.models.Article
+import com.cursoandroid.melisearchapp.data.models.Article
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import java.text.NumberFormat
@@ -30,18 +29,18 @@ class DetailPublicationActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_detail_product)
 
         detailPublicationViewModel = ViewModelProvider(this).get(DetailPublicationViewModel::class.java)
 
         setObservers()
 
-
         val iconBack: ImageButton = findViewById(R.id.ic_back)
+
         setBackButton(iconBack)
 
         validateIntent()
-
     }
 
     private fun validateIntent() {
@@ -72,7 +71,7 @@ class DetailPublicationActivity : AppCompatActivity() {
         price = price.replace(",00", "").replace("ARS", "")
         priceProduct.text = price
 
-        if (Connection.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
+        if (ConnectivityCheck.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             val container: View = findViewById(R.id.containerDetailProduct)
             snackbar = Snackbar.make(
                 container,

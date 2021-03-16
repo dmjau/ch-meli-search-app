@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.adapter.ProductAdapter
-import com.cursoandroid.melisearchapp.common.Connection
+import com.cursoandroid.melisearchapp.common.ConnectivityCheck
 import com.google.android.material.snackbar.Snackbar
 
 class HomeActivity : AppCompatActivity() {
@@ -67,16 +67,13 @@ class HomeActivity : AppCompatActivity() {
             getString(R.string.loading),
             Snackbar.LENGTH_LONG
         )
-
-        if (Connection.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
+        //Check the internet connection using Connection class.
+        if (ConnectivityCheck.isOnline(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             snackbar!!.show()
             homeViewModel.searchProduct(product)
         } else {
-            Toast.makeText(
-                applicationContext,
-                getString(R.string.no_connection),
-                Toast.LENGTH_LONG
-            ).show()
+            //Trouble connection message.
+            Toast.makeText(applicationContext, getString(R.string.no_connection), Toast.LENGTH_LONG).show()
         }
     }
 

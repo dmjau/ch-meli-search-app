@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.common.CodeError
 import com.cursoandroid.melisearchapp.repository.MeLiRepository
-import com.cursoandroid.melisearchapp.retrofit.models.Detail
+import com.cursoandroid.melisearchapp.data.models.Detail
 
 class DetailPublicationViewModel : ViewModel() {
     private val meLiRepository: MeLiRepository = MeLiRepository()

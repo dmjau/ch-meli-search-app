@@ -15,7 +15,8 @@
         android:id="@+id/logo_product"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:contentDescription="@string/image_product" />
+        android:scaleType="centerInside"
+        android:contentDescription="@string/logo_product" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,46 +27,48 @@
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="3dp"
-            android:textSize="10dp"
-            android:textStyle="bold"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ship_normally" />
+            app:layout_constraintTop_toBottomOf="@+id/price" />
 
         <TextView
             android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/title" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/ship_normally"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="4dp"
             android:background="@drawable/badge"
             android:paddingStart="1dp"
             android:paddingEnd="1dp"
             android:text="@string/normal_shipping"
             android:textColor="#ffff"
-            android:textSize="5dp"
+            android:textSize="12sp"
             android:visibility="invisible"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/free_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:textColor="#4CAF50"
-            android:textSize="10dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="4dp"
             android:text="@string/free_shipping"
+            android:textColor="#4CAF50"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
