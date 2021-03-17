@@ -26,8 +26,13 @@ class PublicationAdapter : RecyclerView.Adapter<PublicationAdapter.ViewHolder>()
         dataList = data
     }
 
-
-    //4 metodos propios de un recycler. ViewHolder: Armo el item. onCreateViewHolder: "inflado" o creacion de cada item. onBindViewHolder: indico la correlacion de cada item con el listado de variables.
+    /*
+     * 4 metodos propios de un recycler.
+     * ViewHolder: Armo el item.
+     * onCreateViewHolder: "inflado" o creacion de cada item.
+     * getItemCount: contabiliza el tamano de la lista.
+     * onBindViewHolder: indico la correlacion de cada item con el listado de variables.
+     */
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(imageUrl: String){
             val url = imageUrl.replace("http:", "https:")
@@ -56,7 +61,6 @@ class PublicationAdapter : RecyclerView.Adapter<PublicationAdapter.ViewHolder>()
         holder.itemView.title.text = publication.title
         holder.itemView.price.text ="$ ${price.replace(",00","").replace("ARS","")}"
 
-        println(publication.thumbnail)
         holder.bind(publication.thumbnail)
 
 

@@ -18,7 +18,9 @@ import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.adapters.PublicationAdapter
 import com.cursoandroid.melisearchapp.common.ConnectivityCheck
 import com.google.android.material.snackbar.Snackbar
-
+/*
+ * Activity del home.
+ */
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var homeViewModel: HomeViewModel
@@ -28,57 +30,40 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
-
         setObservers()
-
         val searchProduct: EditText = findViewById(R.id.search_product)
         setSearchProduct(searchProduct)
-
     }
 
     private fun setSearchProduct(searchProduct: EditText) {
         var inputMethod: InputMethodManager
-
         if(application.resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             searchProduct.width = 900
         }
-
         searchProduct.setOnKeyListener((View.OnKeyListener { v, keyCode, event ->
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
                 inputMethod = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
                 getProduct(searchProduct.text.toString())
-
                 inputMethod.hideSoftInputFromWindow(v.applicationWindowToken, 0)
                 return@OnKeyListener true
             }
-
             false
         }))
     }
 
     private fun getProduct(product: String) {
         val container: View = findViewById(R.id.containerRecyclerView)
-
-        snackbar = Snackbar.make(
-            container,
-            getString(R.string.loading),
-            Snackbar.LENGTH_LONG
-        )
-        //Check the internet connection using Connection class.
+        snackbar = Snackbar.make(container, getString(R.string.loading), Snackbar.LENGTH_LONG)
         if (ConnectivityCheck.verifyConnection(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             snackbar!!.show()
             homeViewModel.searchProduct(product)
         } else {
-            //Trouble connection message.
             Toast.makeText(applicationContext, getString(R.string.no_connection), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun setObservers() {
-
         homeViewModel.message.observe(this, Observer {
             Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
         })
@@ -95,5 +80,4 @@ class HomeActivity : AppCompatActivity() {
             }
         })
     }
-
 }

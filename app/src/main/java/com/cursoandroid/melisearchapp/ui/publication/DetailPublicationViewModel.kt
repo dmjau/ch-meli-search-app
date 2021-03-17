@@ -6,7 +6,9 @@ import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.common.ErrorStatusCode
 import com.cursoandroid.melisearchapp.repository.RepositoryMeli
 import com.cursoandroid.melisearchapp.data.models.ItemDetail
-
+/*
+ * ViewModel del detalle de la publicacion.
+ */
 class DetailPublicationViewModel : ViewModel() {
     private val repositoryMeli: RepositoryMeli = RepositoryMeli()
 

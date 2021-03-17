@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.squareup.picasso.Picasso
-
+/*
+ * Adapter para poder utilizar el recycler
+ */
 class PictureAdapter(val imageUrls: ArrayList<com.cursoandroid.melisearchapp.data.models.Picture>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

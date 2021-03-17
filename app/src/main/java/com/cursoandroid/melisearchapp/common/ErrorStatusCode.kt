@@ -1,7 +1,9 @@
 package com.cursoandroid.melisearchapp.common
 
 import com.cursoandroid.melisearchapp.R
-
+/*
+ * Estados de error posibles cuando se efectua la llamada a la Api.
+ */
 class ErrorStatusCode {
     companion object{
         fun evaluateResponseCode(code: Int): Int {

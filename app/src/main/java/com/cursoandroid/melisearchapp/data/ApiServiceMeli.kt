@@ -11,7 +11,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /*
- * Interface que construye el objeto retrofit, y conecta a la API de Mercadolibre (URL_BASE_ML).
+ * Interface que construye el objeto retrofit, y conecta a la API de Mercadolibre (URL_BASE_ML = "https://api.mercadolibre.com/").
  */
 
 interface ApiServiceMeli {

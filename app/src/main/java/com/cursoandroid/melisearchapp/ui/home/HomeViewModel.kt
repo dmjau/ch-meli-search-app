@@ -6,7 +6,9 @@ import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.common.ErrorStatusCode
 import com.cursoandroid.melisearchapp.repository.RepositoryMeli
 import com.cursoandroid.melisearchapp.data.models.InfoResponse
-
+/*
+ * ViewModel del home. LLamado al repositorio, y lo mantiene vigente para consultarlo mediante LiveData.
+ */
 class HomeViewModel() : ViewModel() {
     private var repositoryMeli: RepositoryMeli = RepositoryMeli()
 
@@ -14,11 +16,8 @@ class HomeViewModel() : ViewModel() {
     val productList = MutableLiveData<InfoResponse>()
 
     fun searchProduct(product: String) {
-        repositoryMeli.responseSearch(
-            product,
-            { _, _ ->
-                message.postValue(R.string.error_connection)
-            },
+        repositoryMeli.responseSearch(product,
+            { _, _ -> message.postValue(R.string.error_connection) },
             { _, response ->
                 if (response.isSuccessful) {
                     if(response.body()!!.results.isNotEmpty()) {

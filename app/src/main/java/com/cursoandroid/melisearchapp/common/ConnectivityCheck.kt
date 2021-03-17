@@ -4,7 +4,9 @@ import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import com.cursoandroid.melisearchapp.data.ApiServiceMeli
 
-//Verifica si se realiza correctamente la conexión a internet.
+/*
+ * Verificamoss si se realiza correctamente la conexión a internet.
+ */
 class ConnectivityCheck {
     companion object {
         fun verifyConnection(conManager: ConnectivityManager): Boolean {

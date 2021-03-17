@@ -1,7 +1,9 @@
 package com.cursoandroid.melisearchapp.ui.publication
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageButton
@@ -18,10 +20,13 @@ import com.cursoandroid.melisearchapp.common.Constants
 import com.cursoandroid.melisearchapp.data.models.Attribute
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.activity_detail_publication.*
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
-
+/*
+ * Activity del detalle de la publicacion.
+ */
 class DetailPublicationActivity : AppCompatActivity() {
 
     private lateinit var detailPublicationViewModel: DetailPublicationViewModel
@@ -30,14 +35,13 @@ class DetailPublicationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_detail_product)
+        setContentView(R.layout.activity_detail_publication)
 
         detailPublicationViewModel = ViewModelProvider(this).get(DetailPublicationViewModel::class.java)
 
         setObservers()
 
         val iconBack: ImageButton = findViewById(R.id.ic_back)
-
         setBackButton(iconBack)
 
         validateIntent()
@@ -47,8 +51,7 @@ class DetailPublicationActivity : AppCompatActivity() {
         if (intent.extras!!.containsKey(Constants.PARAM_PUB)) {
             val detailPublication: Attribute =
                 Gson().fromJson(
-                    intent.extras!!.getString(Constants.PARAM_PUB)
-                    , Attribute::class.java
+                        intent.extras!!.getString(Constants.PARAM_PUB), Attribute::class.java
                 )
             populatePublication(detailPublication)
         }
@@ -65,6 +68,7 @@ class DetailPublicationActivity : AppCompatActivity() {
         val format = NumberFormat.getCurrencyInstance(Locale.getDefault())
         var price = format.format(detailPublication.price.roundToInt())
         val priceProduct: TextView = findViewById(R.id.price_product)
+        val linkPublicationPermanent = detailPublication.permalink
 
         titleProduct.text = detailPublication.title
         format.currency = Currency.getInstance(detailPublication.currency_id)
@@ -73,11 +77,8 @@ class DetailPublicationActivity : AppCompatActivity() {
 
         if (ConnectivityCheck.verifyConnection(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             val container: View = findViewById(R.id.containerDetailProduct)
-            snackbar = Snackbar.make(
-                container,
-                getString(R.string.loading),
-                Snackbar.LENGTH_LONG
-            )
+
+            snackbar = Snackbar.make(container, getString(R.string.loading), Snackbar.LENGTH_LONG)
 
             snackbar!!.show()
             setCondition(detailPublication.condition, detailPublication.sold_quantity)
@@ -85,13 +86,10 @@ class DetailPublicationActivity : AppCompatActivity() {
             setCarousel(detailPublication.id)
 
         } else {
-            Toast.makeText(
-                applicationContext,
-                getString(R.string.no_connection),
-                Toast.LENGTH_LONG
-            ).show()
+            Toast.makeText(applicationContext, getString(R.string.no_connection), Toast.LENGTH_LONG).show()
         }
 
+        setBuyButton(linkPublicationPermanent)
     }
 
     private fun setCondition(conditionPublication: String, soldQuantity: Int) {
@@ -115,10 +113,17 @@ class DetailPublicationActivity : AppCompatActivity() {
         }
     }
 
+    private fun setBuyButton(url_permaLink: String) {
+        button_buy_detail.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url_permaLink))
+            startActivity(browserIntent)
+        }
+    }
+
     private fun setObservers() {
 
         detailPublicationViewModel.message.observe(this, Observer {
-            Toast.makeText(applicationContext,getString(it), Toast.LENGTH_LONG)
+            Toast.makeText(applicationContext, getString(it), Toast.LENGTH_LONG)
         })
 
         detailPublicationViewModel.item.observe(this, Observer {
@@ -126,7 +131,7 @@ class DetailPublicationActivity : AppCompatActivity() {
             val pictureAdapter = PictureAdapter(it.pictures)
 
             imagesProduct.setAdapter(pictureAdapter).also {
-                if(snackbar != null){
+                if (snackbar != null) {
                     snackbar!!.dismiss()
                 }
             }

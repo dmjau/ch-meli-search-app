@@ -6,7 +6,9 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.cursoandroid.melisearchapp.R
 import com.cursoandroid.melisearchapp.ui.home.HomeActivity
-
+/*
+ * Pantalla de inicio.
+ */
 class SplashActivity : AppCompatActivity() {
     private val SPLASH_TIME_OUT:Long = 3000 // 1 seg
 
