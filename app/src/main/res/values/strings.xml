@@ -18,4 +18,5 @@
     <string name="logo_footer_brand">logo footer brand</string>
     <string name="text_init_autor">By Dante Martin Jaume</string>
     <string name="button_detail_publication">Comprar ahora</string>
+    <string name="back_search_page">back_search_page</string>
 </resources>

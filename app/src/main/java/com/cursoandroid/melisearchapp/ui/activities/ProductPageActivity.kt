@@ -22,6 +22,7 @@ import com.cursoandroid.melisearchapp.ui.viewmodels.ProductPageViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_product_page.*
+import kotlinx.android.synthetic.main.product_item.view.*
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
@@ -136,6 +137,11 @@ class ProductPageActivity : AppCompatActivity() {
                     snackbar!!.dismiss()
                 }
             }
+        })
+
+        productPageViewModel.itemDetailProduct.observe(this, Observer {
+            val descriptionProduct: TextView = findViewById(R.id.description_product)
+            descriptionProduct.text = it[0].plain_text
         })
 
         productPageViewModel.itemDetailProduct.observe(this, Observer {
