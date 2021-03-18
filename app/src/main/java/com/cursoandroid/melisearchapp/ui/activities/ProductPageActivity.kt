@@ -18,27 +18,27 @@ import com.cursoandroid.melisearchapp.ui.adapters.PictureAdapter
 import com.cursoandroid.melisearchapp.data.common.ConnectivityCheck
 import com.cursoandroid.melisearchapp.data.common.Constants
 import com.cursoandroid.melisearchapp.domain.models.Attribute
-import com.cursoandroid.melisearchapp.ui.viewmodels.DetailPublicationViewModel
+import com.cursoandroid.melisearchapp.ui.viewmodels.ProductPageViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_detail_publication.*
+import kotlinx.android.synthetic.main.activity_product_page.*
 import java.text.NumberFormat
 import java.util.*
 import kotlin.math.roundToInt
 /*
  * Activity del detalle de la publicacion.
  */
-class DetailPublicationActivity : AppCompatActivity() {
+class ProductPageActivity : AppCompatActivity() {
 
-    private lateinit var detailPublicationViewModel: DetailPublicationViewModel
+    private lateinit var productPageViewModel: ProductPageViewModel
     private  var snackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_detail_publication)
+        setContentView(R.layout.activity_product_page)
 
-        detailPublicationViewModel = ViewModelProvider(this).get(DetailPublicationViewModel::class.java)
+        productPageViewModel = ViewModelProvider(this).get(ProductPageViewModel::class.java)
 
         setObservers()
 
@@ -103,14 +103,14 @@ class DetailPublicationActivity : AppCompatActivity() {
     }
 
     private fun setDescription(idPublication: String) {
-        if (detailPublicationViewModel.itemDetailProduct.value == null) {
-            detailPublicationViewModel.getDetailProduct(idPublication)
+        if (productPageViewModel.itemDetailProduct.value == null) {
+            productPageViewModel.getDetailProduct(idPublication)
         }
     }
 
     private fun setCarousel(idPublication: String) {
-        if (detailPublicationViewModel.item.value == null) {
-            detailPublicationViewModel.getItems(idPublication)
+        if (productPageViewModel.item.value == null) {
+            productPageViewModel.getItems(idPublication)
         }
     }
 
@@ -123,11 +123,11 @@ class DetailPublicationActivity : AppCompatActivity() {
 
     private fun setObservers() {
 
-        detailPublicationViewModel.message.observe(this, Observer {
+        productPageViewModel.message.observe(this, Observer {
             Toast.makeText(applicationContext, getString(it), Toast.LENGTH_LONG)
         })
 
-        detailPublicationViewModel.item.observe(this, Observer {
+        productPageViewModel.item.observe(this, Observer {
             val imagesProduct: ViewPager = findViewById(R.id.image_product)
             val pictureAdapter = PictureAdapter(it.pictures)
 
@@ -138,7 +138,7 @@ class DetailPublicationActivity : AppCompatActivity() {
             }
         })
 
-        detailPublicationViewModel.itemDetailProduct.observe(this, Observer {
+        productPageViewModel.itemDetailProduct.observe(this, Observer {
             val descriptionProduct: TextView = findViewById(R.id.description_product)
             descriptionProduct.text = it[0].plain_text
         })

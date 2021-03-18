@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activities.HomeActivity"
+    tools:context=".ui.activities.SearchPageActivity"
     android:orientation="vertical">
-    <include layout="@layout/toolbar_search"
+    <include layout="@layout/toolbar_search_page"
         android:id="@+id/include"/>
 
     <LinearLayout android:id="@+id/containerRecyclerView"

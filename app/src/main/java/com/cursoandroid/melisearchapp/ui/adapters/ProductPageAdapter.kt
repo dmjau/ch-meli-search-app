@@ -10,15 +10,15 @@ import com.cursoandroid.melisearchapp.R.layout
 import com.cursoandroid.melisearchapp.data.common.Constants
 import com.cursoandroid.melisearchapp.domain.models.Attribute
 import com.cursoandroid.melisearchapp.domain.models.PublicationType
-import com.cursoandroid.melisearchapp.ui.activities.DetailPublicationActivity
+import com.cursoandroid.melisearchapp.ui.activities.ProductPageActivity
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import java.util.*
-import kotlinx.android.synthetic.main.publication.view.*
+import kotlinx.android.synthetic.main.product_item.view.*
 import kotlin.math.roundToInt
 
 
-class PublicationAdapter : RecyclerView.Adapter<PublicationAdapter.ViewHolder>() {
+class ProductPageAdapter : RecyclerView.Adapter<ProductPageAdapter.ViewHolder>() {
 
     private var dataList = listOf<Attribute>()
 
@@ -44,7 +44,7 @@ class PublicationAdapter : RecyclerView.Adapter<PublicationAdapter.ViewHolder>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater
             .from(parent.context)
-            .inflate(layout.publication, parent, false)
+            .inflate(layout.product_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -75,7 +75,7 @@ class PublicationAdapter : RecyclerView.Adapter<PublicationAdapter.ViewHolder>()
         }
 
         holder.itemView.setOnClickListener {
-            Intent(it.context, DetailPublicationActivity::class.java).apply {
+            Intent(it.context, ProductPageActivity::class.java).apply {
                 putExtra(Constants.PARAM_PUB, Gson().toJson(publication))
                 it.context.startActivity(this)
             }

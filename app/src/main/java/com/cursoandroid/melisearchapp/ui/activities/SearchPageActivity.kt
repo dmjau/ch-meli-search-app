@@ -15,23 +15,23 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.ui.adapters.PublicationAdapter
+import com.cursoandroid.melisearchapp.ui.adapters.ProductPageAdapter
 import com.cursoandroid.melisearchapp.data.common.ConnectivityCheck
-import com.cursoandroid.melisearchapp.ui.viewmodels.HomeViewModel
+import com.cursoandroid.melisearchapp.ui.viewmodels.SearchPageViewModel
 import com.google.android.material.snackbar.Snackbar
 /*
  * Activity del home.
  */
-class HomeActivity : AppCompatActivity() {
+class SearchPageActivity : AppCompatActivity() {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private lateinit var adapter: PublicationAdapter
+    private lateinit var searchPageViewModel: SearchPageViewModel
+    private lateinit var adapter: ProductPageAdapter
     private var snackbar: Snackbar? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+        setContentView(R.layout.activity_search_page)
+        searchPageViewModel = ViewModelProvider(this).get(SearchPageViewModel::class.java)
         setObservers()
         val searchProduct: EditText = findViewById(R.id.search_product)
         setSearchProduct(searchProduct)
@@ -58,20 +58,20 @@ class HomeActivity : AppCompatActivity() {
         snackbar = Snackbar.make(container, getString(R.string.loading), Snackbar.LENGTH_LONG)
         if (ConnectivityCheck.verifyConnection(applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager)) {
             snackbar!!.show()
-            homeViewModel.searchProduct(product)
+            searchPageViewModel.searchProduct(product)
         } else {
             Toast.makeText(applicationContext, getString(R.string.no_connection), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun setObservers() {
-        homeViewModel.message.observe(this, Observer {
+        searchPageViewModel.message.observe(this, Observer {
             Toast.makeText(applicationContext, it, Toast.LENGTH_LONG).show()
         })
 
-        homeViewModel.productList.observe(this, Observer {
+        searchPageViewModel.productList.observe(this, Observer {
             val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-            adapter = PublicationAdapter()
+            adapter = ProductPageAdapter()
             recyclerView.layoutManager = LinearLayoutManager(applicationContext)
             recyclerView.adapter = adapter
             adapter.setDataList(it.results)

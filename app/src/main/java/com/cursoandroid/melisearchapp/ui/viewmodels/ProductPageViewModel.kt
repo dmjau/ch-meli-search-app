@@ -9,7 +9,7 @@ import com.cursoandroid.melisearchapp.domain.models.ItemDetail
 /*
  * ViewModel del detalle de la publicacion.
  */
-class DetailPublicationViewModel : ViewModel() {
+class ProductPageViewModel : ViewModel() {
     private val repositoryMeli: RepositoryMeli = RepositoryMeli()
 
     var itemDetailProduct: MutableLiveData<ArrayList<ItemDetail>> = MutableLiveData<ArrayList<ItemDetail>>()

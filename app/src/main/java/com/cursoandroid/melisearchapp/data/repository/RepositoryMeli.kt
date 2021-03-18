@@ -5,6 +5,8 @@ import com.cursoandroid.melisearchapp.domain.models.ItemDetail
 import com.cursoandroid.melisearchapp.domain.models.InfoResponse
 import retrofit2.Call
 import retrofit2.Callback
+
+
 /*
  * Inicializamos el repositorio llamando a la Api con los distintos metodos.
  * Search: busqueda por termino de producto.

@@ -9,7 +9,7 @@ import com.cursoandroid.melisearchapp.domain.models.InfoResponse
 /*
  * ViewModel del home. LLamado al repositorio, y lo mantiene vigente para consultarlo mediante LiveData.
  */
-class HomeViewModel() : ViewModel() {
+class SearchPageViewModel() : ViewModel() {
     private var repositoryMeli: RepositoryMeli = RepositoryMeli()
 
     var message: MutableLiveData<Int> = MutableLiveData<Int>()
