@@ -1,11 +1,11 @@
-package com.cursoandroid.melisearchapp.ui.splash
+package com.cursoandroid.melisearchapp.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.ui.home.HomeActivity
+
 /*
  * Pantalla de inicio.
  */
@@ -17,7 +17,7 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            startActivity(Intent(this,HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             // close this activity
             finish()
         }, SPLASH_TIME_OUT)

@@ -1,14 +1,15 @@
-package com.cursoandroid.melisearchapp.adapters
+package com.cursoandroid.melisearchapp.ui.adapters
 
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
+import com.cursoandroid.melisearchapp.domain.models.Picture
 import com.squareup.picasso.Picasso
 /*
  * Adapter para poder utilizar el recycler
  */
-class PictureAdapter(val imageUrls: ArrayList<com.cursoandroid.melisearchapp.data.models.Picture>) : PagerAdapter() {
+class PictureAdapter(val imageUrls: ArrayList<Picture>) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
         return view == `object`

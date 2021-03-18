@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.data.models
+package com.cursoandroid.melisearchapp.domain.models
 
 import com.google.gson.annotations.SerializedName
 

@@ -11,15 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.publication.DetailPublicationActivity" android:parentActivityName=".ui.home.HomeActivity"/>
-        <activity android:name=".ui.splash.SplashActivity">
+        <activity android:name=".ui.activities.DetailPublicationActivity" android:parentActivityName=".ui.activities.HomeActivity"/>
+        <activity android:name=".ui.activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.home.HomeActivity">
+        <activity android:name=".ui.activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

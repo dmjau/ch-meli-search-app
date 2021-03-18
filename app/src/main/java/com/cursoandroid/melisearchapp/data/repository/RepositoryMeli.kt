@@ -1,8 +1,8 @@
-package com.cursoandroid.melisearchapp.repository
+package com.cursoandroid.melisearchapp.data.repository
 
 import com.cursoandroid.melisearchapp.data.ApiServiceMeli
-import com.cursoandroid.melisearchapp.data.models.ItemDetail
-import com.cursoandroid.melisearchapp.data.models.InfoResponse
+import com.cursoandroid.melisearchapp.domain.models.ItemDetail
+import com.cursoandroid.melisearchapp.domain.models.InfoResponse
 import retrofit2.Call
 import retrofit2.Callback
 /*

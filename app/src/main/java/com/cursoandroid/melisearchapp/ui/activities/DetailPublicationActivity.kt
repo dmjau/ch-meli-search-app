@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.ui.publication
+package com.cursoandroid.melisearchapp.ui.activities
 
 import android.content.Context
 import android.content.Intent
@@ -14,10 +14,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.adapters.PictureAdapter
-import com.cursoandroid.melisearchapp.common.ConnectivityCheck
-import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.data.models.Attribute
+import com.cursoandroid.melisearchapp.ui.adapters.PictureAdapter
+import com.cursoandroid.melisearchapp.data.common.ConnectivityCheck
+import com.cursoandroid.melisearchapp.data.common.Constants
+import com.cursoandroid.melisearchapp.domain.models.Attribute
+import com.cursoandroid.melisearchapp.ui.viewmodels.DetailPublicationViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_detail_publication.*

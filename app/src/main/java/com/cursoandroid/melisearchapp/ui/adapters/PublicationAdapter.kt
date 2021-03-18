@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.adapters
+package com.cursoandroid.melisearchapp.ui.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.cursoandroid.melisearchapp.R.layout
-import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.data.models.Attribute
-import com.cursoandroid.melisearchapp.data.models.PublicationType
-import com.cursoandroid.melisearchapp.ui.publication.DetailPublicationActivity
+import com.cursoandroid.melisearchapp.data.common.Constants
+import com.cursoandroid.melisearchapp.domain.models.Attribute
+import com.cursoandroid.melisearchapp.domain.models.PublicationType
+import com.cursoandroid.melisearchapp.ui.activities.DetailPublicationActivity
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import java.util.*

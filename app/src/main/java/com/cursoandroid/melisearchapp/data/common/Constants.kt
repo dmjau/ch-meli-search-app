@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.common
+package com.cursoandroid.melisearchapp.data.common
 /*
  * Constantes que se van a utilizar en la app.
  */

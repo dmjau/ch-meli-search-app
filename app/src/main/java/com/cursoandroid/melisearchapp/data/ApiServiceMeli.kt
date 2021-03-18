@@ -1,8 +1,8 @@
 package com.cursoandroid.melisearchapp.data
 
-import com.cursoandroid.melisearchapp.common.Constants
-import com.cursoandroid.melisearchapp.data.models.ItemDetail
-import com.cursoandroid.melisearchapp.data.models.InfoResponse
+import com.cursoandroid.melisearchapp.data.common.Constants
+import com.cursoandroid.melisearchapp.domain.models.ItemDetail
+import com.cursoandroid.melisearchapp.domain.models.InfoResponse
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.common
+package com.cursoandroid.melisearchapp.data.common
 
 import com.cursoandroid.melisearchapp.R
 /*

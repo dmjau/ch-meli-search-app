@@ -1,11 +1,11 @@
-package com.cursoandroid.melisearchapp.ui.publication
+package com.cursoandroid.melisearchapp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.common.ErrorStatusCode
-import com.cursoandroid.melisearchapp.repository.RepositoryMeli
-import com.cursoandroid.melisearchapp.data.models.ItemDetail
+import com.cursoandroid.melisearchapp.data.common.ErrorStatusCode
+import com.cursoandroid.melisearchapp.data.repository.RepositoryMeli
+import com.cursoandroid.melisearchapp.domain.models.ItemDetail
 /*
  * ViewModel del detalle de la publicacion.
  */

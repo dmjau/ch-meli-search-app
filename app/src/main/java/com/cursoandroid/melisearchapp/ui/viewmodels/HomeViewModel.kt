@@ -1,11 +1,11 @@
-package com.cursoandroid.melisearchapp.ui.home
+package com.cursoandroid.melisearchapp.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.common.ErrorStatusCode
-import com.cursoandroid.melisearchapp.repository.RepositoryMeli
-import com.cursoandroid.melisearchapp.data.models.InfoResponse
+import com.cursoandroid.melisearchapp.data.common.ErrorStatusCode
+import com.cursoandroid.melisearchapp.data.repository.RepositoryMeli
+import com.cursoandroid.melisearchapp.domain.models.InfoResponse
 /*
  * ViewModel del home. LLamado al repositorio, y lo mantiene vigente para consultarlo mediante LiveData.
  */

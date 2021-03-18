@@ -1,4 +1,4 @@
-package com.cursoandroid.melisearchapp.ui.home
+package com.cursoandroid.melisearchapp.ui.activities
 
 import android.content.Context
 import android.content.res.Configuration
@@ -15,8 +15,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.cursoandroid.melisearchapp.R
-import com.cursoandroid.melisearchapp.adapters.PublicationAdapter
-import com.cursoandroid.melisearchapp.common.ConnectivityCheck
+import com.cursoandroid.melisearchapp.ui.adapters.PublicationAdapter
+import com.cursoandroid.melisearchapp.data.common.ConnectivityCheck
+import com.cursoandroid.melisearchapp.ui.viewmodels.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 /*
  * Activity del home.
